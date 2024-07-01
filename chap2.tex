@@ -1,0 +1,531 @@
+\chapter{Review of Related Literature}
+\label{chap:Review of Related literature}
+
+ 
+ \indent \indent This chapter provides an overview on the concepts used in this research. Each subtopic is a discussion on the different concepts that are necessary and vital to the research.
+ 
+ \indent \indent First of all, the literature on combinatorics is discussed. This is to provide context on the possible number of solutions for the problem that is about to be solved. Texts on graph theory follows next. It is necessary as it shows how the problem could be illustrated and presented visually. After this is a discussion on the traveling salesman problem, which discusses the problem that is about to be solved in the paper. The Darwin's Theory of Evolution is also briefly explored as some of the concepts in this theory are used in providing for the solution to the problem. Genetic Algorithm (GA) is presented in this section to provide context on how algorithms like this one finds solutions on specific problems using concepts in biology, like the Darwinian theory. In this literature, the different steps and multiple variations of GA are also discussed. Following this, the literature on Genetic Algorithm on Traveling Salesman Problem (TSP) is presented. This is done in order to show how the Genetic Algorithm is used to solve prolems like the TSP: how it is presented, and the process on how solutions are generation. Lastly, the Multiple Offspring Genetic Algorithm (MOGA) is also shown to introduce a specific type of GA that is utilized in the research.
+ 
+\section{Combinatorics}
+ \indent \indent Combinatorics is a young field of mathematics that started its own independence in the 20th century \cite{combinatorics}. It deals with the combination and arrangement of sets into patterns that comply with the given rules.  \par 
+
+\subsection{Enumeration}
+ \indent \indent Enumeration deals with counting the number of elements in a finite set \cite{stanley1986enumerative}. Two major concepts involved in enumeration are {permutation} and {combination}. 
+
+{Permutation} is a particular ordering of objects \cite{combinatorics}. It frequently asks ``Given \emph{n} objects, how many ways can you order \emph{k} objects?". Given \emph{n}, the number of permutations if \emph{k} is taken at a time is denoted by Equation \ref{eqn:permutation1}. In particular, where n=k, it is denoted by Equation \ref{eqn:permutation2}. 
+
+\begin{equation}
+	\label{eqn:permutation1}
+	P(n,k)= \frac{n!}{(n-k)!}
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$n$\> = total number of objects\\
+	$k$\> = number of objects selected\\
+\end{tabbing}
+
+\begin{equation}
+	\label{eqn:permutation2}
+	P(n,k)=\frac{n!}{(n-k)!}=\frac{n!}{(n-n)!}= \frac{n!}{0!} = n!
+\end{equation}
+
+\noindent In particular, Equation \ref{eqn:permutation2} shows Equation \ref{eqn:permutation1} if n=k. It is assumed that 0! = 1. For example, given the set $N= \{1,2,3,4,5\}$, how many ways can you arrange the elements if you take 5 elements at a time?
+\hfill \par 
+$$P(n,k)= P(5,5)=\frac{5!}{(5-5)!}=\frac{5!}{(0)!}= \frac{5!}{1}= 5!$$ \par 
+
+
+{Combination}, on the other  hand, deals not with the order of the objects, but whether an object is chosen or not \cite{morris2017combinatorics}. It involves picking items in a given set and disregarding the order. The number of combinations with \emph{r} objects given an \emph{n} population is solved by
+
+\begin{equation}
+	\label{eqn:combination}
+	C{n \choose k}  = \frac{n!}{k!(n-k)!}
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$n$\> = total number of objects\\
+	$k$\> = number of objects selected\\
+\end{tabbing}
+
+\section{Graph Theory}
+ \indent \indent A graph is a set of points called vertices connected by lines known as edges or arcs \cite{graphtheory}.
+\begin{figure}[H]
+	\caption{An example of a graph with 3 vertices and edges.}
+	\includegraphics[scale=0.5]{Illustrations/undirected}
+	\centering
+\end{figure}
+
+There are two types of graphs that differ according to the direction of the edges: directed and undirected \cite{graphtheory}. A directed graph, as shown on Figure~\ref{fig:directedGraph}  is formed by directed edges or arcs, meaning, an edge has a specified direction to where it goes. \cite{ruohonen2013graph}.
+
+\begin{figure}[H]
+	\caption{An example of a directed graph.}
+	\includegraphics[scale=0.5]{Illustrations/directedd}
+	\centering
+	\label{fig:directedGraph}
+\end{figure}
+
+Meanwhile, an undirected graph is formed by edges without a specified direction. It is illustrated on Figure~\ref{fig:undirectedGraph}.
+
+\begin{figure}[H]
+	\caption{An example of an undirected graph with 3 vertices.}
+	\includegraphics[scale=0.5]{Illustrations/undirected}
+	\centering
+	\label{fig:undirectedGraph}
+\end{figure}
+
+Another helpful type of graph is the complete graph. It is formed when all of the possible edges between the vertices are created in the graph \cite{ruohonen2013graph} and an example is shown on Figure~\ref{fig:completeGraph}.
+
+\begin{figure}[H]
+	\caption{An example of a complete graph with 4 vertices.}
+	\includegraphics[scale=0.5]{Illustrations/Complete}
+	\centering
+	\label{fig:completeGraph}
+\end{figure}
+
+Some fundamental concepts in graph theory involve paths and cycles \cite{brucato2013traveling}. A path is a walk within a graph where no vertex is repeated. For example, in Figure \ref{fig:completeGraph}, $ 1 \rightarrow 2 \rightarrow 3 $ is a path. Since no vertex is repeated, it automatically follows that no edge is visited more than once. Meanwhile, a cycle is a walk whose starting vertex will be its ending vertex. From Figure \ref{fig:completeGraph}, $ 1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow 1 $ is a cycle. \hfill \par 
+
+More advanced definitions in the graph theory include the Hamiltonian path and the Hamiltonian cycle. A Hamiltonian path is a path that contains all the vertices given in a graph \cite{brucato2013traveling}. Based on Figure ~\ref{fig:Hamiltonian}, $ 1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow 5 $ is a hamiltonian path and it is shown on Figure ~\ref{fig:HamPath}. Meanwhile, a Hamiltonian cycle is a cycle that contains all the vertices in a given graph \cite{brucato2013traveling}. Using Figure ~\ref{fig:Hamiltonian}, $ 1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow 5 \rightarrow 1$ is a hamiltonian cycle and is illustrated on Figure ~\ref{fig:HamCycle}. 
+
+\begin{figure}[H]
+	\caption{A graph with 5 edges and vertices.}
+	\includegraphics[scale=0.5]{Illustrations/hamiltonian}
+	\centering
+	\label{fig:Hamiltonian}
+\end{figure}
+
+
+\begin{figure}[H]
+	\caption{A hamiltonian path.}
+	\includegraphics[scale=0.5]{Illustrations/Ham_Path}
+	\centering
+	\label{fig:HamPath}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\caption{A hamiltonian cycle.}
+	\includegraphics[scale=0.5]{Illustrations/Ham_Cycle}
+	\centering
+	\label{fig:HamCycle}
+\end{figure}
+
+
+Note that $ 1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow  5 \rightarrow 1$ and $ 3 \rightarrow 4 \rightarrow 5 \rightarrow 1 \rightarrow 2 \rightarrow 3$ are the same Hamiltonian cycles.
+
+\section{Traveling Salesman Problem}
+\indent \indent The Traveling Salesman Problem (TSP) is a combinatorial problem that was defined in the 1930s by Karl Menger \cite{salvador2010traveling}. It answers the question ``Given a set of cities, what is the shortest possible route to be taken in order to visit all the cities and return to the origin?" \cite{papadimitriou1977euclidean}.  Its solution is a hamiltonian cycle \cite{brucato2013traveling}. \par 
+
+There are two major types of TSP, the symmetric and asymmetric \cite{matai2010traveling}. In a symmetric TSP, the path between two cities has no specified directions. It means that the cost of traveling between two cities, even if the route is on a different direction, is the same. It is denoted by undirected graphs. In Figure~\ref{fig:SymmetricTSP}, path $0 \rightarrow 1$ is equal to path $1 \rightarrow 0$. \par 
+
+\begin{figure}[H]
+	\caption{An example of a Symmetric TSP with 3 cities.}
+	\includegraphics[scale=0.5]{Illustrations/undirected}
+	\centering
+	\label{fig:SymmetricTSP}
+\end{figure}
+
+Meanwhile, in asymmetric TSP, the cost of traveling between cities on different directions are not equal. It is illustrated by directed graphs. In Figure~\ref{fig:Assymetric}, path $0 \rightarrow 1$ costs 1 unit. However, path $1 \rightarrow 0$ costs 3 units. \par 
+
+\begin{figure}[H]
+	\caption{An example of an Asymmetric TSP with 3 cities.}
+	\includegraphics[scale=0.5]{Illustrations/directed}
+	\centering
+	\label{fig:Assymetric}
+\end{figure}
+
+
+The TSP is a permutation problem \cite{gupta2012study}. It deals with the arrangement or order of the cities and therefore, the search space increases gradually every time a city is added. Some say it is NP-Hard while others claim it is an NP-Complete \cite{salvador2010traveling,haist2007optical}.  \par
+Using brute-force approach, the running time will lie within a polynomial factor of $\mathcal{O}(n!)$ because given a list of n cities, the size of the search space in a general case is $(n-1)!$ \cite{jain2017solving, hahsler2007tsp}. However, $\frac{(n-1)!}{2}$ is used to solve for the search space of symmetric TSP \cite{singh2013study}. It is because in symmetric TSP, a route can be represented in two ways.\par 
+
+
+\section{Darwin's Theory of Evolution}
+\indent \indent Charles Darwin's ``Theory of Evolution" is a widely accepted concept which states that all life descended from a common ancestor, and are therefore related \cite{alzohairy}. It presumes that descendants evolve with more complexities compared to their ancestors. Variation and the struggle for existence are the two characteristics that result in biological changes \cite{darwin}. \par 
+
+Variations occur within individuals in the population \cite{darwin}. The varying traits of these individuals are passed on to the next generations. Existential competition preserves the advantageous traits and removes the inferior ones in order to improve their potential to exist. \par 
+
+The concept of Natural Selection is included within this theory \cite{darwin}. It was stated that with the varying traits of individuals, those with slight advantageous traits will have a higher chance of survival as compared to the individuals who do not posses such traits. Furthermore, these advantageous traits can be passed on to their offspring.
+
+\section{Genetic Algorithm}
+\indent \indent In computer science, there are some known algorithms that follow the laws of natural evolution \cite{larranaga1999genetic}. These probabilistic search algorithms are known as Evolutionary  Algorithms (EA) and were proposed in the late 1960s. After a few years, these algorithms were used to optimize solutions for NP-Hard problems which were applied in different fields such as Biology, Chemistry, Cryptoanalysis, Pattern Recognition, etc.  \par 
+
+The Genetic Algorithm (GA), introduced by John Holland in 1975, is one of the most commonly used EAs \cite{reeves2003genetic}. It was mainly based on Darwin's Theory of Evolution and is used in optimization problems. It is often characterized by the following \cite{srinivas1994adaptive}:
+\begin{itemize}
+	\item genetic representation
+	\item population of generated solutions
+	\item fitness function that evaluates each solution
+	\item genetic operators that creates new population based on the existing one
+	\item control parameters
+\end{itemize}\par 
+
+
+In this algorithm, one solves a solution in the form of a string of numbers, which is referred to as chromosomes \cite{larranaga1999genetic}. The main goal here is to find the best chromosome that will give us the optimal solution to the given problem. The group of chromosomes that will be worked on will be known as the population. \par 
+
+Just like in Darwin's Theory of Evolution, the population will compete, mate, and sometimes, mutate, through time \cite{maad2016genetic}. Due to natural selection, advantageous traits and individuals will be  preserved for the next generations. This will result in more fit individuals and eventually, will lead to the domination of superior individuals within the population.\par 
+Pseudocode for GA is as presented on Algorithm 1 \cite{bodenhofer2003genetic}:
+\begin{algorithm}
+\begin{algorithmic}
+	\caption{Psudocode for Genetic Algorithm}
+	\State{BEGIN GA} 
+	\State Initialize Population 
+	\While {Terminating Condition/s}
+	\State Select Parents from Population 
+	\State Produce offspring from selected parents  
+	\State Mutate individuals
+	\State Add offspring to the population
+	\State Reduce the population to the original size  
+	
+	\EndWhile
+	\State Show Output 
+	\State END GA  
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Initializing the Population}
+\indent \indent First, an initial population will be generated. This population is composed of a set of strings or individuals known as chromosomes \cite{reeves2003genetic}. A chromosome is composed of genes. These chromosomes are represented in different ways, the most popular are the binary and numerical or non-binary representations \cite{gen2007genetic}. \par 
+
+In Binary representation, the chromosomes are given by genes that contain the numbers {0,1}. For example: 
+\begin{center}
+	\begin{tabular}{ c c c }
+		010 & 110 & 101 \\     
+	\end{tabular}
+\end{center}
+
+\par 
+Meanwhile, in a non-binary representation, the real values of the genes are used. 
+\begin{center}
+	\begin{tabular}{ c c c }
+		2 & 6 & 5 \\     
+	\end{tabular}
+\end{center}
+
+
+\subsection{Selection}
+\indent \indent After initializing the population, the selection process follows \cite{maad2016genetic}. The selection process is a way of determining which solutions are to be preserved and will yield offspring \cite{bhattacharjya2012introduction} \cite{maad2016genetic}. Its main goal is to preserve the better solutions while discarding the bad ones while maintaining the population size. A fitness function is described in order to determine the good solutions within the population. This varies depending on the problem. The fitness value is calculated for each individual, and will be compared with each other to determine the most fit individuals or as Darwin calls it, "the survival of the fittest. \par 
+There are several ways to implement the selection process, and it includes roulette wheel, ranking, tournament, and steady-state \cite{yadav2017comparative}. In Roulette Wheel, all individuals within the population are placed in a roulette wheel wherein their fitness value or rank is proportional to their portion in the wheel. Individuals with the higher fitness values have a better chance of getting picked. The roulette is spun until the desired number of individuals is picked.\par
+
+
+Common processes in the different selection implementations are \cite{yadav2017comparative}: \par 
+\begin{itemize}
+	\item Identifying the best individuals within the population.
+	\item Duplicating the best solutions.
+	\item Disregarding the least fit solutions to the problem.
+\end{itemize}
+
+Sometimes, some individuals from the original population are carried out to be a part the next population\cite{maad2016genetic}. This is known as elitism.
+
+\subsection{Crossover}
+\indent \indent After the parents will be chosen for each iteration in the selection, they will produce an offspring that will be added to the population. This process is known as the crossover. This process is mimics the reproduction process of living things as it is the step where there is an exchange of genes within individuals \cite{srinivas1994genetic}. For example, given the individuals: \par 
+$P_1=[4,1,3,2]$ and $P_2=[6,2,7,3]$ \par 
+as parents, a crossover would mean that they will each exchange genes in order to create an offpring, depending on the given process. For this one, we will assume that they will exchange their last digits to create their offspring. Replacing the last digit of $P_1$ into $P_2$ will yield $C_1=[6,2,7,2]$, and replacing the last digit of $P_2$ into $P_1$ will yield $C_2=[4,1,3,3]$. \par 
+
+1-point crossover, k-point crossover, and shuffle crossover are some of the variations in implementing crossover.
+
+\subsection{Mutation}
+\indent \indent After the offspring are generated, these new individuals has a chance of mutation \cite{gen2007genetic} \cite{grefenstette1986optimization}. The mutation process randomly alters an individual's genes. It is done so to prevent the population from converging fast and to avoid getting stuck in a local optima. \par An example of a mutation is the flip mutation. It is applicable when binary representation is used. It is done by flipping the genes from 0 to 1, and vice versa. For example, given the string
+
+\begin{center}
+	\begin{tabular}{ c c c }
+		010 & 110 & 101 \\     
+	\end{tabular}
+\end{center}
+
+If it undergoes flip mutation, it will be 
+
+\begin{center}
+	\begin{tabular}{ c c c }
+		101 & 001 & 010 \\     
+	\end{tabular}
+\end{center}
+
+\hfill \par 
+
+\hfill \par
+\indent \indent After a series of crossovers and mutations, the new population will be evaluated and the most fit individuals based on the criteria given will proceed to the next iteration \cite{gen2007genetic}. An iteration will be known as a generation. \par 
+
+Stopping criteria varies on the problem. There are three criteria for stopping that are commonly used in GA \cite{safe2004stopping}:
+\begin{itemize}
+	\item{a limit to the number of generations reached}
+	\item{a limit to the number of evaluations of the fitness function is reached}
+	\item{or low significant changes with the next generations}
+\end{itemize}
+
+\subsection{Parameter Setting}
+There are some parameters to be considered in evolutionary algorithms like the GA. Selection, crossover, and mutation rates are the most common parameters needed in the said process. \par
+
+The traditional genetic algorithm uses constant values for each parameter \cite{de1975analysis}. While constant parameters are proven effective to problems, optimum values may be require a lot of tests as they have to be experimentally plugged into the system to figure out which values work best. With this, parameter controls are introduced \cite{eiben1999parameter}. \par 
+An example of parameter control is the dynamic mutation where the mutation rate is not represented by a fixed value, but rather, an equation involving the fitness values of the population  \cite{xu2018application}. On Equation \ref{DynamicMutation}, m is given as a function involving the average fitness of the population, $F_{ave}$, and the current optimum solution of the population, $F_{optimum}$. The mutation rate will be high if there is minimum diversity among the population and it is low of the population is diverse.
+
+\begin{equation} \label{DynamicMutation}
+	m = (1 -\frac{F_{ave} - F_{optimum}}{F_{optimum}})^k
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$m$\> = mutation rate\\
+	$F_{ave}$\> = average fitness of the population\\
+	$F_{optimum}$ = average fitness of the population\\
+	$k$\> = control for change in amplitude\\
+\end{tabbing}
+
+\section{Genetic Algorithm on Travelling Salesman Problem}
+\indent \indent Numerous heuristics were used to solve TSP\cite{larranaga1999genetic}. Simulated Annealing was the first heuristic used to solve it. Robert Brady was the first researcher to tackle TSP with GA in 1985.  \par 
+
+
+\subsection{Representations}
+\label{GaRepresentation}
+\indent \indent There are varying representations used to solve TSP using GA: Binary, Path, Adjacency, Ordinal, and Matrix \cite{larranaga1999genetic}. \par 
+
+Binary representation uses binary numbers in representing the cities. For example, if a path is 3-5-2-7, the chromosome will be given by 011-101-010-111. In Path representation, given an n number of cities, a chromosome will be of size n. The order of the path will be the order of the numbers representing the cities in the chromosome. For example, if we have cities 1-9, and given the string [3 1 4 2 6 8 5 7 9], city 3 will be visited first, followed by 1, then 4, and so on until a cycle is complete. \par 
+\hfill \par 
+\hfill \par 
+
+
+\subsection{Crossover}
+\label{GaCrossover}
+\indent \indent For the crossover, there are some variations used throughout history \cite{larranaga1999genetic}. One example is the Order crossover. It was proposed by Davis in 1985 and it stresses that the order of cities, not their positions, are important. For example \par 
+
+\hfill \par
+$P_{1}$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$P_{2}$ = [ 9 3 4 2 1 5 6 8 7] \par
+\hfill \par
+
+
+
+First, it selects two random cut points. For example, the first cut will be done in between 3rd and 4th element, while the second cut will be made between the 7th and 8th element. It will look like this. \par 
+
+
+\hfill \par
+$P_{1}$ = [ 1 2 3 $|$ 4 5 6 7 $|$ 8 9] \par 
+$P_{2}$ = [ 9 3 4 $|$ 2 1 5 6 $|$ 8 7] \par
+
+\hfill \par 
+
+Where the middle sections will be preserved, and be put into the offprings. \par 
+
+\hfill \par 
+$C_{1}$ = [ x x x $|$ 4 5 6 7 $|$ x x] \par 
+$C_{2}$ = [ x x x $|$ 2 1 5 6 $|$ x x] \par 
+\hfill \par
+
+
+And then, starting from the second cut point of a parent, the cities are copied in order from the other parent, also starting from the second cut point while removing the cities that already exist within the string. 
+\hfill \par 
+
+\hfill \par 
+$C_{1}$ = [ x x x $|$ 4 5 6 7 $|$ 8 x] \par 
+\hfill \par
+Since the second cut of the second parent starts with 8, and 8 does not yet exist within the future offspring, we add it to the string.
+
+\hfill \par 
+$C_{1}$ = [ x x x $|$ 4 5 6 7 $|$ 8 9] \par 
+\hfill \par
+Since the next number of the second parent is 7, and it exists within the future offspring, we do not add it. Since it is the end of the string for $P_2$, we proceed to  the first number on the string. Since 9 is the 1st number on $P_2$, and 9 is not yet present within the child string, we add 9 to the last vacant position.
+
+\hfill \par 
+$C_{1}$ = [ 3 x x $|$ 4 5 6 7 $|$ 8 9] \par 
+\hfill \par
+After 9, the next number on $P_2$ if we traverse it in a linear way is 3, which is non existent within the child string. Since we are done filling the numbers on the second cut of $C_1$, we will not fill the empty slots before the 1st cut. The process goes on until we get \par 
+\hfill \par 
+$C_{1}$ = [ 3 2 1 $|$ 4 5 6 7 $|$ 8 9] \par 
+\hfill \par 
+The same process will be done for the second offspring. It's middle chunk will be from $P_2$ and its remaining digits will come from $P_1$ and will be placed in a way the digits of $C_1$ is filled. it will result in:
+\hfill \par 
+$C_{2}$ = [ 3 4 7 $|$ 2 1 5 6 $|$ 8 9] \par
+
+\hfill \par 
+
+The resulting children will be:
+\hfill \par
+$C_{1}$ = [ 3 2 1 4 5 6 7 8 9] \par 
+$C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+\hfill \par 
+Aside from this, other crossover methods include Partial-Mapping by Goldberg and Lingle , Cycle crossover by Oliver et. al, Position Based Crossover by Syswerda, and some more \cite{larranaga1999genetic}.
+
+
+\subsection{Mutation}
+\label{GaMutation}
+\indent \indent For the mutation, different variations are also present like the Simple Inversion Mutation by Holland, Displacement mutation by Michalewizc and Exchange mutation by Banchaf \cite{larranaga1999genetic}.\par 
+
+\hfill \par 
+
+The Simple Inversion Mutation (SIM) \cite{larranaga1999genetic} was proposed by Holland in 1975. It chooses two random cuts from an individual, and reverses the order of the middle chunk. For example. \par 
+\hfill \par 
+
+$C_{1}$ = [3 4 7 2 1 5 6 8 9] \par 
+
+\hfill \par 
+Assuming that the first cut point is between the 3rd and 4th numbers, and the second cut point is between the 7th and 8th numbers. \par 
+
+We now have \par 
+\hfill \par 
+$C_{1}$ = [3 4 7 $|$ 2 1 5 6 $|$ 8 9] \par 
+
+\hfill \par 
+
+Reversing the order of the middle chunk will give us \par 
+
+\hfill \par 
+
+$C_{1}$ = [3 4 7 $|$ 6 5 1 2 $|$ 8 9] \par 
+$C_{1}$ = [3 4 7 6 5 1 2 8 9] \par 
+
+\hfill \par 
+
+The processes repeats itself until the terminating condition is satisfied. 
+
+\begin{figure}[H]
+	\caption{Flowchart for the GA on TSP}
+	\includegraphics[scale=0.75]{Illustrations/flowchart}
+	\centering
+\end{figure}
+
+\section{Multiple Offspring Genetic Algorithm} \label{MOGA}
+\indent \indent There are three conditions for natural selection: variation, inheritance, and competition \cite{godfrey2007conditions}. {Variation} refers to the differing characteristics of individuals within the population. {Inheritance} refers to the traits that are passed on from parents to offspring. {Competition} refers to the occasion where more fit and competitive individuals survive. \par 
+
+With that being said, we can infer that a larger population contains a lot of variations. And with the existence of a greater variety of individuals, a more competitive population will exist. This is the biological theory that led to the foundation of the  {Multiple Offspring Genetic Algorithm} (MO-GA) from the paper titled "Multi-offspring genetic algorithm and its application to the traveling salesman problem" by Jiquan Wang, Okan Ersoy, Mengying He, and Fulin Wang. \par 
+
+The {MO-GA} is a special Genetic Algorithm wherein instead of creating 2 offspring from 2 parents, 4 offspring will be generated. \par
+
+An individual will be represented by a string of numbers. Path representation will be used in this method. The numbers indicate the city number and the order within the string represent the order of the cities. An individual, which represents the route, will be randomly generated and it will contain a string of non-repeating numbers representing the cities. For example, if there are 5 cities, a string of size 5 of non-repeating numbers from 1-5 will be created, e.g. 3, 2 ,4, 1, 5. \par
+
+
+\subsection{Initializing the Population}
+\indent \indent For the initial population, 100 individuals will be randomly generated. There is no guarantee that an individual is unique as duplicates may also be randomly generated.\par 
+\hfill \par
+
+\subsection{Selection}
+\indent \indent In determining the individuals who will become parents, the roulette wheel method is used. For this method, the individual fitness and probability of each individual to be picked is established. \par 
+
+There are two models used in solving the fitness of an individual. The first one is \par 
+\begin{equation}
+	\label{eq:fit1}
+	F_1(X_i')= \beta (1 - \beta )^{i-1}   , i= 1, 2, ... n
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$n$\> = the population size\\
+	$X_i$\> = the ith member of the population when arranged in ascending order\\
+	$\beta$ \> =  parameter that $\in(0,1)$ and is usually $\beta=(0.01, 0.3)$\cite{realnumbergenetic}\\
+\end{tabbing}
+
+The second model is given by \par 
+\begin{equation}
+	\label{eq:fit2}
+	F_2(X_i')= \frac{n-i+1}{n}  , i=1, 2 ,... n
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$n$\> = the population size\\
+\end{tabbing}
+
+\hfill \par 
+
+If the number of generation is odd, Equation \ref{eq:fit2} will be used, else, Equation \ref{eq:fit1} will be utilized. In choosing the crossover members or parents, given the fitness value $F(X_i')$, the probability of an ith member to be selected is denoted by Equation \ref{eq:fitprob} where $PP_0$ is given by Equation \ref{eq:fit0} and $PP_i$ is given by Equation \ref{eq:fitsum}. \par 
+
+\begin{equation}
+	\label{eq:fitprob}
+	P_i = \frac{F(X_i')}{\sum_{i=1}^{n} F(X_i')}
+\end{equation}
+\begin{equation}
+	\label{eq:fit0}
+	PP_0=0
+\end{equation}
+\begin{equation}
+	\label{eq:fitsum}
+	PP_i= \sum_{j=1}^i  P_i  , i=1, 2, ... n 
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$F(X_i')$ = the fitness value of an individual\\
+	$n$\> = the population size\\
+	$P_i$ \> = the probability of an individual to be selected.\\
+\end{tabbing}
+
+
+A random number $n_k$ is selected from (0,1) for 2n times. If the random number satisfies Equation \ref{eq:probsum}, the ith member will be selected for crossover.
+
+\begin{equation}
+	\label{eq:probsum}
+	PP_{i-1} < n_k < PP_i
+\end{equation}
+
+
+\subsection{Crossover and Mutation}
+\label{MogaCrossover}
+\indent \indent In the basic GA, 2 parents generate 2 offspring. In MO-GA, 2 parents generate 4 offspring during the crossover method.
+Since the offspring will be twice the original GA can produce, two crossover methods will be used. The first one is the Order crossover described in Section \ref{GaCrossover}, while the second one will be as follows : \par 
+Consider the two strings \par 
+
+\hfill \par 
+
+$P_{1}$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$P_{2}$ = [ 9 3 4 2 1 5 6 8 7] \par
+
+\hfill \par 
+Again, there will be two cut points. \par
+\hfill \par 
+
+$P_{1}$ = [ 1 2 3 $|$ 4 5 6 7 $|$ 8 9] \par 
+$P_{2}$ = [ 9 3 4 $|$ 2 1 5 6 $|$ 8 7] \par
+
+\hfill \par 
+
+From this, we switch the first and second subtours of each parent \par 
+
+\hfill \par 
+
+$PP_{1}$ = [ 4 5 6 7 $|$ 1 2 3 $|$ 8 9] \par 
+$PP_{2}$ = [ 2 1 5 6 $|$ 9 3 4 $|$ 8 7] \par
+
+\hfill \par 
+
+Swapping the 3rd subtours of each parent while copying the rest in order and omitting the duplicates, we get 
+\par 
+\hfill \par
+$C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+$C_{4}$ = [ 2 1 5 6 3 4 7 8 9] \par
+
+\hfill \par 
+
+After obtaining offspring, a mutation rate established earlier will be used to determine if certain offspring will mutate or not. Each offspring will be given a random number $m=[0,1]$. If the number assigned to an individual is less than or equal to m, then that individual will mutate. The mutation process used is the Inversion as described on Section \ref{GaMutation}.  \par 
+
+After the crossover and mutation process, the selection for the next generation follows. Elitism is implemented on this, wherein a specified number of most fit individuals from the parent population, will not be replaced and be carried on to the next generation \cite{yang2007genetic}. \par 
+
+The process repeats itself until a terminating condition is satisfied. The step-by-step process for the MO-GA is presented on Algorithm 2.
+
+\begin{algorithm}
+	\label{alg:MogaAlg}
+	\begin{algorithmic}
+		\caption{Multi Offspring Genetic Algorithm}
+		\State{BEGIN MOGA} 
+		\State Initialize random population with size n
+		\While {Terminating Condition/s}
+		\For{i=0; $i<n$; i++}
+		\State Compute for the path length of each individual
+		\EndFor
+		\State Arrange individuals in ascending order based on path lengths
+		\State Select the \emph{q} highest ranking individuals in the population
+		\For{i=0; $i<n$; i++}
+		\State Using the selection and crossover operations, generate offspring
+		\EndFor
+		\State Create a new population by combining the q elitist members selected and \emph{2n} offpsrings generated.
+		\State Compute for the path lengths of each individual and arrange them in ascending order
+		\State From the new population, select new \emph{q} individuals with the highest rank
+		\For{i=0; $i<2n$; i++}
+		\State Modify the offsprings using the mutation operator
+		\EndFor
+		\State Create a new population consisting of the \emph{2n} mutated and unmutated offspring and the latest \emph{q} individuals
+		\State Arrange the members of the new population in ascending order according to their path lengths
+		\State Select the \emph{n} highest ranking individuals as the new population
+		
+		\EndWhile
+		\State Show Output 
+		\State END MOGA  
+	\end{algorithmic}
+\end{algorithm}

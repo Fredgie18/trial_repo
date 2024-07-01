@@ -1,0 +1,505 @@
+\chapter{Methodology}
+\label{chap:Methodology}
+A balance between converging into an optimum solution and providing diverse solutions is needed for a GA to work properly \cite{srinivas1994adaptive}. While MO-GA could provide both with its crossover method, its mutation rate could be considered weak at maintaining the said balance due to it being set as a fixed value. \par
+With this proposed algorithm called "Multi-offspring Genetic Algorithm with Dynamic Mutation (MO-GA with DM)", the concepts and procedures of MO-GA are utilized, however, the constant mutation rate will be replaced by one that changes depending on the stability of the population. It follows the step-by-step process of MO-GA as discussed on section \ref{MOGA}, with the insertion of the computation for a mutation rate, instead of using a fixed rate. \par 
+
+The step-by-step process for the MO-GA with Dynamic Mutation is summarized on Algorithm 3.
+
+\begin{algorithm}[H]
+	\label{alg:MogaDMAlg}
+	\begin{algorithmic}
+		\caption{Multi Offspring Genetic Algorithm with Dynamic Mutation}
+		\State{BEGIN MOGA with DM} 
+		\State Initialize random population with size n
+		\While {Terminating Condition/s}
+		\For{i=0; $i<n$; i++}
+		\State Compute for the path length of each individual
+		\EndFor
+		\State Arrange individuals in ascending order based on path lengths
+		\State Select the \emph{q} highest ranking individuals in the population
+		\For{i=0; $i<n$; i++}
+		\State Using the selection and crossover operations, generate offspring
+		\EndFor
+		\State Create a new population by combining the q elitist members selected and \emph{2n} offpsrings generated.
+		\State Compute for the path lengths of each individual and arrange them in ascending order
+		\State From the new population, select new \emph{q} individuals with the highest rank
+		\State Based on the current population, compute for the mutation rate.
+		\For{i=0; $i<2n$; i++}
+		\State Modify the offsprings using the mutation operator
+		\EndFor
+		\State Create a new population consisting of the \emph{2n} mutated and unmutated offspring and the latest \emph{q} individuals
+		\State Arrange the members of the new population in ascending order according to their path lengths
+		\State Select the \emph{n} highest ranking individuals as the new population
+		
+		\EndWhile
+		\State Show Output 
+		\State END MOGA with DM
+	\end{algorithmic}
+\end{algorithm}
+
+\section{Representation} \label{sampleRep}
+\indent \indent Path representation will be used for this method. The cities are assigned a number that represents them and each city contains x and y coordinates. The individuals of each population contain an array of cities and they represent the route taken. For example if an individual is denoted by $A_1$ = [1 2 3 4 5 6 7 8 9], its path can be visualized in Figure \ref{fig:sampleRepresentation}.
+
+\begin{figure}[H]
+	\caption{A sample representation for an individual in MO-GA with DM.}
+	\includegraphics[scale=0.6]{Illustrations/sampleRep}
+	\centering
+	\label{fig:sampleRepresentation}
+\end{figure}
+
+\section{Initialization} \label{sampleInit}
+\indent \indent The initial number of the individuals in the population will be given by \emph{n}, which is a non-negative constant number defined at the beginning of the algorithm. The order of the cities in every individual is generated randomly. For a map with \emph{c} number of cities, numbers 1 to \emph{c} are generated without repetition for \emph{c} times. In the earlier example from Section \ref{sampleRep}, for a map with 9 cities, \emph{$A_1$} is generated randomly. The random generation of individuals is repeated \emph{n} times to complete the population number of \emph{n}. For example, we generate a population where \emph{n}=10 and \emph{c}=9: \par 
+
+$A_{1}$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$A_{2}$ = [ 9 34 2 5 1 6 8 7] \par 
+$A_{3}$ = [ 2 3 1 4 5 6 7 8 9] \par 
+$A_{4}$ = [ 3 4 1 2 5 6 7 8 9] \par 
+$A_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+$A_{6}$ = [ 9 2 4 3 5 6 1 8 7] \par 
+$A_{7}$ = [ 8 2 3 4 7 6 5 1 9] \par 
+$A_{8}$ = [ 4 2 3 1 5 9 7 8 6] \par 
+$A_{9}$ = [ 9 3 4 2 1 5 6 8 7] \par
+$A_{10}$ = [ 7 1 5 4 3 6 2 8 9] \par 
+
+\section{Computation for Path Length and Arrangement}
+\indent \indent The path length of each individual is the main basis for its fitness. Its path length is the summation of the distances between the cities. With the current representation, the distance between two cities \emph{i} and \emph{j} with coordinates given by (\emph{$x_i$}, \emph{$y_i$}) and (\emph{$x_j$}, \emph{$y_j$}) is given by Equation \ref{eq:distance}.
+\begin{equation}
+	\label{eq:distance}
+	D_{ij} = ((x_i - x_j)^2 + (y_i - y_j)^2)^{0.5}
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$D_{ij}$\> = distance between cities i and j\\
+	$x_i$\> = x-coordinate for city i\\
+	$x_j$\> = x-coordinate for city j\\
+	$y_i$\> = y-coordinate for city i\\
+	$y_j$\> = y-coordinate for city j\\
+\end{tabbing}
+
+With the example individual $N_1$ = [1 3 4 5 2 6 7 8 9] from section \ref{sampleRep} with 9 cities, its total path length can be computed by Equation \ref{eq:totaldistance}.
+
+\begin{equation}
+	\label{eq:totaldistance}
+	D_{Total} = D_{12} + D_{23} + D_{34} + D_{45} + D_{56} + D_{67} + D_{78} + D_{89} + D_{91} 
+\end{equation}
+
+Assuming that we have computed the path lengths of the individuals given in section \ref{sampleInit}, we arrange them from shortest to longest path, we then have Table \ref{table:orderPath}.
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{llll}
+			Individual & Route Length  \\
+			$A_{1}$         & 35    \\
+			$A_{2}$         & 39    \\
+			$A_{3}$          & 42   \\
+			$A_{4}$          & 43   \\
+			$A_{5}$         & 50    \\
+			$A_{6}$          & 55   \\
+			$A_{7}$          & 56   \\
+			$A_{8}$          & 64   \\
+			$A_{9}$          & 70   \\
+			$A_{10}$         & 71                          
+		\end{tabular}
+		\caption{Path Lengths for Example}
+		\label{table:orderPath}
+	\end{center}
+\end{table}
+
+\section{Preservation of \emph{q} elitist members} \label{elitist1}
+\indent \indent In order to preserve the best individuals of the population, selecting and saving them for later is done. The number of individuals to be chosen is given by \emph{q} which is an arbitrary number that is less than \emph{n}. For the example, we let \emph{q} = 5, therefore, the best 5 individuals will be selected and saved for later use and they comprise of $A_{1}$ to $A_5$.
+
+$A_{1}$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$A_{2}$ = [ 9 3 4 2 5 1 6 8 7] \par 
+$A_{3}$ = [ 2 3 1 4 5 6 7 8 9] \par 
+$A_{4}$ = [ 3 4 1 2 5 6 7 8 9] \par 
+$A_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+
+\section{Selection and Crossover}
+\indent \indent The selection and crossover process comes next. Two individuals will be selected at a time to act as parents. The fitness of each individual is given by 2 equations which are used alternately. Equation \ref{eq:fit12} is used when the current generation (iteration) is an odd number. Meanwhile, Equation \ref{eq:fit22} is utilized when the current generation is an even number.
+
+\begin{equation}
+	\label{eq:fit12}
+	F_1(X_i')= \beta (1 - \beta )^{i-1}   , i= 1, 2, ... n
+\end{equation}
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$n$\> = the population size\\
+	$X_i$\> = the ith member of the population when arranged in ascending order\\
+	$\beta$ \> =  parameter that $\in(0,1)$ and is usually $\beta=(0.01, 0.3)$\cite{realnumbergenetic}\\
+\end{tabbing}
+\begin{equation}
+	\label{eq:fit22}
+	F_2(X_i')= \frac{n-i+1}{n}  , i=1, 2 ,... n
+\end{equation}
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$n$\> = the population size\\
+\end{tabbing}
+
+Given the fitness value $F(X_i')$, the probability of an \emph{i}th member to be selected is given by Equation \ref{eq:fitprob2}, letting $PP_0$ to be given by Equation \ref{eq:fit02} and $PP_i$ to be given by Equation \ref{eq:fitsum2}.
+
+\begin{equation}
+	\label{eq:fitprob2}
+	P_i = \frac{F(X_i')}{\sum_{i=1}^{n} F(X_i')}
+\end{equation}
+
+\begin{equation}
+	\label{eq:fit02}
+	PP_0=0
+\end{equation}
+
+\begin{equation}
+	\label{eq:fitsum2}
+	PP_i= \sum_{j=1}^i  P_i  , i=1, 2, ... n 
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$F(X_i')$ = the fitness value of an individual\\
+	$n$\> = the population size\\
+	$P_i$ \> = the probability of an individual to be selected.\\
+\end{tabbing}
+
+
+A parent is chosen by generating a random number \emph{$n_k$} from (0,1) and is determined by Equation \ref{eq:probsum2}. If \emph{$n_k$} satisfies Equation \ref{eq:probsum2},then the \emph{i}th member will be chosen. 2 parents are selected at a time, so two \emph{$n_k$} are generated.\par
+
+\begin{equation}
+	\label{eq:probsum2}
+	PP_{i-1} < n_k < PP_i
+\end{equation}
+
+Assume we have already computed for the \emph{$P_i$} and \emph{$PP_i$} for all the individuals in the population and it is shown on Table \ref{table:ExampleFitVal}. Suppose we have \emph{$n_k$} values 0.36, and 0.54, then we have individuals $A_{1}$ and $A_2$ as parents. 
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{llll}
+			Individual & Route Length & $F(X_i')$              &  $PP_i$               \\
+			$A_{1}$         & 35           & 0.300  & 0.309 \\
+			$A_{2}$         & 39           & 0.210  & 0.525 \\
+			$A_{3}$          & 42           & 0.147  & 0.676 \\
+			$A_{4}$          & 43           & 0.103 & 0.782 \\
+			$A_{5}$         & 50           & 0.072 & 0.856 \\
+			$A_{6}$          & 55           & 0.050 & 0.908 \\
+			$A_{7}$          & 56           & 0.035 & 0.944 \\
+			$A_{8}$          & 64           & 0.025 & 0.970 \\
+			$A_{9}$          & 70           & 0.017 & 0.988 \\
+			$A_{10}$         & 71           & 0.012 & 1                
+		\end{tabular}
+		\caption{Fitness Values of Example}
+		\label{table:ExampleFitVal}
+	\end{center}
+\end{table}
+
+The first two children are generated by using the order crossover discussed on section \ref{GaCrossover}. For this example, given that $A_1$ and $A_2$ are selected as parents, respectively, the offspring can be computed as follows:
+\begin{enumerate}
+	\item First, it selects two random cut points. A cut point is a random number generated from 1 to \emph{c}-1 that slices the individuals into subtours. Since we are selecting 2 random cut points, they must be non-repeating and it creates. For example, if we get random cut points 3 and 7, the first cut will be done in between 3rd and 4th element, while the second cut will be made between the 7th and 8th element. It will look like this. \par 
+	
+	\hfill \par
+	$P_{1}$ = $A_1$ = [ 1 2 3 $|$ 4 5 6 7 $|$ 8 9] \par 
+	$P_{2}$ = $A_2$ = [ 9 3 4 $|$ 2 1 5 6 $|$ 8 7] \par
+	
+	\hfill \par 
+	
+	\item The middle sections will be preserved, and be put into the offpring. \par 
+	
+	\hfill \par 
+	$C_{1}$ = [ x x x $|$ 4 5 6 7 $|$ x x] \par 
+	$C_{2}$ = [ x x x $|$ 2 1 5 6 $|$ x x] \par 
+	\hfill \par
+	
+	
+	\item And then, starting from the second cut point of a parent, the cities are copied in order from the other parent, also starting from the second cut point while removing the cities that already exist within the string. 
+	\hfill \par 
+	
+	\hfill \par 
+	$C_{1}$ = [ x x x $|$ 4 5 6 7 $|$ 8 x] \par 
+	\hfill \par
+	Since the second cut of the second parent starts with 8, and 8 does not yet exist within the future offspring, we add it to the string.
+	
+	\hfill \par 
+	$C_{1}$ = [ x x x $|$ 4 5 6 7 $|$ 8 9] \par 
+	\hfill \par
+	Since the next number of the second parent is 7, and it exists within the future offspring, we do not add it. Since it is the end of the string for $P_2$, we proceed to  the first number on the string. Since 9 is the 1st number on $P_2$, and 9 is not yet present within the child string, we add 9 to the last vacant position.
+	
+	\hfill \par 
+	$C_{1}$ = [ 3 x x $|$ 4 5 6 7 $|$ 8 9] \par 
+	\hfill \par
+	After 9, the next number on $P_2$ if we traverse it in a linear way is 3, which is non existent within the child string. Since we are done filling the numbers on the second cut of $C_1$, we will not fill the empty slots before the 1st cut. The process goes on until we get \par 
+	\hfill \par 
+	$C_{1}$ = [ 3 2 1 $|$ 4 5 6 7 $|$ 8 9] \par 
+	\hfill \par 
+	
+	\item The same process will be done for the second offspring. It's middle chunk will be from $P_2$ and its remaining digits will come from $P_1$ and will be placed in a way the digits of $C_1$ is filled. it will result in:
+	\hfill \par 
+	$C_{2}$ = [ 3 4 7 $|$ 2 1 5 6 $|$ 8 9] \par
+	
+	\hfill \par 
+	
+	The resulting children will be:
+	\hfill \par
+	$C_{1}$ = [ 3 2 1 4 5 6 7 8 9] \par 
+	$C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+	\hfill \par 
+	
+\end{enumerate}
+
+For the third and fourth children, the process utilized is the same as discussed on section \ref{MogaCrossover}. For this given example, it is generated as follows:
+
+\begin{enumerate}
+	\item The same parents from the earlier crossover method will be used. Also, the same cutpoints will be utilized for this process. So we have the following parents with their cutpoints.\par
+	\hfill \par 
+	
+	$P_{1}$ = [ 1 2 3 $|$ 4 5 6 7 $|$ 8 9] \par 
+	$P_{2}$ = [ 9 3 4 $|$ 2 1 5 6 $|$ 8 7] \par
+	
+	\hfill \par 
+	
+	\item From this, we switch the first and second subtours of each parent \par 
+	
+	\hfill \par 
+	
+	$PP_{1}$ = [ 4 5 6 7 $|$ 1 2 3 $|$ 8 9] \par 
+	$PP_{2}$ = [ 2 1 5 6 $|$ 9 3 4 $|$ 8 7] \par
+	
+	\hfill \par 
+	
+	\item Swapping the 3rd subtours of each parent while copying the rest in order and omitting the duplicates, we get 
+	\par 
+	\hfill \par
+	$C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+	$C_{4}$ = [ 2 1 5 6 3 4 7 8 9] \par
+	
+	\hfill \par 
+\end{enumerate}
+
+After the crossover process, we have generated 4 offspring out of 2 parents. The crossover process will be done for $\emph{n}/2$ times so it is ideal to have an \emph{n} that is an even number. When the whole crossover process is finished, 2\emph{n} offspring are generated from \emph{n} parents. Assuming we have finished generating all offspring, we have the \emph{C} list of offspring. \ par
+
+$C_{1}$ = [ 3 2 1 4 5 6 7 8 9] \par 
+$C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+$C_{4}$ = [ 2 1 5 6 3 4 7 8 9] \par
+$C_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+$C_{6}$ = [ 9 2 4 3 5 6 1 8 7] \par 
+$C_{7}$ = [ 8 2 3 4 7 6 5 1 9] \par 
+$C_{8}$ = [ 4 2 3 1 5 9 7 8 6] \par 
+$C_{9}$ = [ 9 3 4 2 1 5 6 8 7] \par
+$C_{10}$ = [ 7 1 5 4 3 6 2 8 9] \par 
+$C_{11}$ = [ 1 2 4 3 5 6 7 8 9] \par 
+$C_{12}$ = [ 2 3 1 6 5 4 7 8 9] \par 
+$C_{13}$ = [ 2 1 3 4 5 6 7 8 9] \par 
+$C_{14}$ = [ 3 1 4 2 5 6 7 8 9] \par 
+$C_{15}$ = [ 5 6 1 3 2 4 7 8 9] \par 
+$C_{16}$ = [ 2 9 4 3 5 6 1 8 7] \par 
+$C_{17}$ = [ 3 2 8 4 7 6 5 1 9] \par 
+$C_{18}$ = [ 7 2 3 1 5 9 4 8 6] \par 
+$C_{19}$ = [ 9 3 4 2 1 5 6 7 8] \par
+$C_{20}$ = [ 7 5 1 4 3 6 2 8 9] \par 
+
+\section{Preserving another set of \emph{q} elitist members} \label{elitist2}
+\indent \indent After the 2\emph{n} offspring have been generated, we combine the offspring population with the \emph{q} elitist members that were selected on section \ref{elitist1}, compute for their individual path length, and arrange them from shortest to longest route lengths. Assuming we have combined and arranged them, we have the following population: \par
+
+$C_{1}$ = [ 3 2 1 4 5 6 7 8 9] \par 
+$A_{1}$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$A_{2}$ = [ 9 3 4 2 5 1 6 8 7] \par 
+$C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+$A_{3}$ = [ 2 3 1 4 5 6 7 8 9] \par 
+$C_{4}$ = [ 2 1 5 6 3 4 7 8 9] \par
+$A_{4}$ = [ 3 4 1 2 5 6 7 8 9] \par 
+$C_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+$A_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+$C_{6}$ = [ 9 2 4 3 5 6 1 8 7] \par 
+$C_{7}$ = [ 8 2 3 4 7 6 5 1 9] \par 
+$C_{8}$ = [ 4 2 3 1 5 9 7 8 6] \par 
+$C_{9}$ = [ 9 3 4 2 1 5 6 8 7] \par
+$C_{10}$ = [ 7 1 5 4 3 6 2 8 9] \par 
+$C_{11}$ = [ 1 2 4 3 5 6 7 8 9] \par 
+$C_{12}$ = [ 2 3 1 6 5 4 7 8 9] \par 
+$C_{13}$ = [ 2 1 3 4 5 6 7 8 9] \par 
+$C_{14}$ = [ 3 1 4 2 5 6 7 8 9] \par 
+$C_{15}$ = [ 5 6 1 3 2 4 7 8 9] \par 
+$C_{16}$ = [ 2 9 4 3 5 6 1 8 7] \par 
+$C_{17}$ = [ 3 2 8 4 7 6 5 1 9] \par 
+$C_{18}$ = [ 7 2 3 1 5 9 4 8 6] \par 
+$C_{19}$ = [ 9 3 4 2 1 5 6 7 8] \par
+$C_{20}$ = [ 7 5 1 4 3 6 2 8 9] \par 
+
+From the newly generated population, we again select the  \emph{q} highest ranking members. In the example, \emph{ q} is 5, therefore, the five highest ranking individuals will be saved for later use. The five highest ranking members are: \par 
+$Q_1 = C_{1}$ = [ 3 2 1 4 5 6 7 8 9] \par 
+$Q_2 = A_{1}$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$Q_3 = C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$Q_4 = A_{2}$ = [ 9 3 4 2 5 1 6 8 7] \par 
+$Q_5 = C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+
+\section{Computation for Mutation Rate} \label{compMutation}
+\indent \indent The mutation rate will be based on the stability of the population, meaning, it is dependent on the ratio of the average fitness of the population and the optimum fitness. It is given on Equation \ref{DynamicMutation2} \cite{xu2018application}. $F_{ave}$ is the average path length of the population given by Equation \ref{averagePathLength} where $F_i$ is the path length of an individual and \emph{n} is the number of individuals within the population. Meanwhile $F_{optimum}$ is the shortest path length in the population.\par
+
+\begin{equation} \label{averagePathLength}
+	F_{ave} = \frac{\sum_{i=1}^{n} F_{i}}{n}
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$F_{ave}$\> = average fitness of the population\\
+	$F_{i}$\> = fitness of an individual\\
+	$n$\> = total number of individuals in the population\\
+\end{tabbing}
+
+\begin{equation} \label{DynamicMutation2}
+	m = (1 -\frac{F_{ave} - F_{optimum}}{F_{optimum}})^k
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$m$\> = mutation rate\\
+	$F_{ave}$\> = average fitness of the population\\
+	$F_{optimum}$ = average fitness of the population\\
+	$k$\> = control for change in amplitude\\
+\end{tabbing}
+Assuming that the route lengths for the new population on Section \ref{elitist2} is given on Table \ref{table:FitnessValOfNewPop}, $F_{ave}$ is 50.76 and the $F_{optimum}$ is the path length of $C_1$ which is 34. Therefore \emph{m} is 0.507.
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ll}
+			Individual & Route Length \\
+			$C_{1}$          & 34     \\
+			$A_{1}$         & 35  \\
+			$C_{2}$          & 66   \\
+			$A_{2}$         & 39    \\
+			$C_{3}$          & 54 \\
+			$A_{3}$          & 42    \\
+			$C_{4}$          & 70 \\
+			$A_{4}$          & 43   \\
+			$C_{5}$         & 41   \\
+			$A_{5}$         & 50    \\
+			$C_{6}$         & 41   \\       
+			$C_{7}$          & 34     \\
+			$C_{8}$          & 66   \\
+			$C_{9}$          & 54 \\
+			$C_{10}$          & 70 \\
+			$C_{11}$         & 41   \\       
+			$C_{12}$          & 34     \\
+			$C_{13}$          & 66   \\
+			$C_{14}$          & 54 \\
+			$C_{15}$          & 70 \\
+			$C_{16}$         & 41   \\       
+			$C_{17}$          & 34     \\
+			$C_{18}$          & 66   \\
+			$C_{19}$          & 54 \\
+			$C_{20}$          & 70 \\
+		\end{tabular}
+		\caption{Fitness Values of New Population}
+		\label{table:FitnessValOfNewPop}
+	\end{center}
+\end{table}
+
+\section{Mutation Process}
+\indent \indent The \emph{2n} offspring will then undergo the mutation process. For this once, each individual generated a random number \emph{$p_m$} from (0,1). If \emph{$p_m$} $\leq$ \emph{m}, then the individual mutates. Else, the individual retains itself. The mutation process is only terminated once all the offspring have undergone mutation or retention depending on the \emph{$p_m$} that was randomly assigned to them. \par 
+The mutation process used is the simple inversion mutation described on section \ref{MogaCrossover}. For the example, assuming that $C_1$ has generated \emph{$p_m$} of 0.45, it will undergo mutation as the \emph{m} computed earlier from section \ref{compMutation} is 0.5, and 0.45 < 0.5. Its mutation will be as follows:
+
+\begin{enumerate}
+	\item We have the offspring $C_1$ given by:
+	
+	$C_{1}$ = [ 3 2 1 4 5 6 7 8 9] \par 
+	
+	\hfill \par 
+	We again generate 2 random cut points. Assuming that the first cut point is between the 3rd and 4th numbers, and the second cut point is between the 7th and 8th numbers. We now have \par 
+	\hfill \par 
+	$C_{1}$ = [3 2 1$|$ 4 5 6 7 $|$ 8 9] \par 
+	
+	\hfill \par 
+	
+	\item Reversing the order of the middle chunk will give us \par 
+	
+	\hfill \par 
+	
+	$C_{1}$ = [3 2 1 $|$ 7 6 5 4 $|$ 8 9] \par 
+	$C_{1}$ = [3 2 1 7 6 5 4 8 9]\par 
+	
+	\hfill \par 
+\end{enumerate}
+
+The mutation process will generate a new offspring population composed of mutated and nonmutated offspring. Assume that the new offspring population has been generated fully by the mutation process, we then have:
+
+$C_{1}$ = [3 2 1 7 6 5 4 8 9]\par 
+$C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+$C_{4}$ = [ 2 1 5 4 3 6 7 8 9] \par
+$C_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+$C_{6}$ = [ 9 4 2 3 5 6 1 8 7] \par 
+$C_{7}$ = [ 8 2 3 4 7 6 5 1 9] \par 
+$C_{8}$ = [ 4 2 3 1 5 9 7 8 6] \par 
+$C_{9}$ = [ 9 3 4 2 8 6 5 1 7] \par
+$C_{10}$ = [ 7 1 5 4 3 6 2 8 9] \par 
+$C_{11}$ = [ 1 2 4 3 5 6 7 8 9] \par 
+$C_{12}$ = [ 2 3 1 5 6 4 7 8 9] \par 
+$C_{13}$ = [ 2 1 3 4 5 6 7 8 9] \par 
+$C_{14}$ = [ 3 2 4 1 5 6 7 8 9] \par 
+$C_{15}$ = [ 5 6 1 3 2 4 7 8 9] \par 
+$C_{16}$ = [ 2 9 4 3 5 6 1 8 7] \par 
+$C_{17}$ = [ 3 2 8 4 7 6 5 1 9] \par 
+$C_{18}$ = [ 7 4 9 5 1 3 2 8 6] \par 
+$C_{18}$ = [ 7 2 3 1 5 9 4 8 6] \par 
+$C_{19}$ = [ 9 3 4 2 1 5 6 7 8] \par
+$C_{20}$ = [ 7 5 1 4 3 6 2 8 9] \par 
+
+\section{Create New Population}
+\indent \indent The final process is the creation of the new population that will be used in the next generation. To get the new population, the 2\emph{n} nonmutated and mutated offspring will be combined with the \emph{q} members selected from section \ref{elitist2}. All the individual route lengths will be computed and they will be ordered from shortest to longest route length. The \emph{n} highest ranking individuals will make up the new population. Assuming we have combined and ordered the 2\emph{n} offspring and \emph{q} individuals, we have: 
+
+$C_{1}$ = [3 2 1 7 6 5 4 8 9]\par 
+$C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+$Q_1$ = [ 3 2 1 4 5 6 7 8 9] \par 
+$Q_2$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$C_{4}$ = [ 2 1 5 4 3 6 7 8 9] \par
+$C_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+$Q_3$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$C_{6}$ = [ 9 4 2 3 5 6 1 8 7] \par 
+$C_{7}$ = [ 8 2 3 4 7 6 5 1 9] \par 
+$Q_4$ = [ 9 3 4 2 5 1 6 8 7] \par 
+$C_{8}$ = [ 4 2 3 1 5 9 7 8 6] \par 
+$C_{9}$ = [ 9 3 4 2 8 6 5 1 7] \par
+$Q_5$ = [ 4 5 6 1 2 3 9 8 7] \par 
+$C_{10}$ = [ 7 1 5 4 3 6 2 8 9] \par 
+$C_{11}$ = [ 1 2 4 3 5 6 7 8 9] \par 
+$C_{12}$ = [ 2 3 1 5 6 4 7 8 9] \par 
+$C_{13}$ = [ 2 1 3 4 5 6 7 8 9] \par 
+$C_{14}$ = [ 3 2 4 1 5 6 7 8 9] \par 
+$C_{15}$ = [ 5 6 1 3 2 4 7 8 9] \par 
+$C_{16}$ = [ 2 9 4 3 5 6 1 8 7] \par 
+$C_{17}$ = [ 3 2 8 4 7 6 5 1 9] \par 
+$C_{18}$ = [ 7 4 9 5 1 3 2 8 6] \par 
+$C_{18}$ = [ 7 2 3 1 5 9 4 8 6] \par 
+$C_{19}$ = [ 9 3 4 2 1 5 6 7 8] \par
+$C_{20}$ = [ 7 5 1 4 3 6 2 8 9] \par 
+
+Selecting \emph{n} members to be the new population \emph{A}, we then have: \par 
+$A_1 = C_{1}$ = [3 2 1 7 6 5 4 8 9]\par 
+$A_2 = C_{2}$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$A_3 = C_{3}$ = [ 4 5 6 1 2 3 9 8 7] \par 
+$A_4 = Q_1$ = [ 3 2 1 4 5 6 7 8 9] \par 
+$A_ 5 = Q_2$ = [ 1 2 3 4 5 6 7 8 9] \par 
+$A_6 = C_{4}$ = [ 2 1 5 4 3 6 7 8 9] \par
+$A_7 = C_{5}$ = [ 5 1 6 3 2 4 7 8 9] \par 
+$A_8 = Q_3$ = [ 3 4 7 2 1 5 6 8 9] \par 
+$A_9 = C_{6}$ = [ 9 4 2 3 5 6 1 8 7] \par 
+$A_10 = C_{7}$ = [ 8 2 3 4 7 6 5 1 9] \par
+
+\hfill
+
+\section{Test Cases and Experimental Setup}
+\indent \indent There are 3 data sets used in testing the described algorithm each containing different number of data points (cities): Burma14 with 14 cities, EIL51 with 51 cities, and KROB100 with 100 cities, where each city is given by their respective x and y coordinates. Raw data sets are obtained from TSPLIB and presented on Tables \ref{longtable:EIL51Data}, \ref{longtable:KROB100Data}, and \ref{table:Burma14Data} from Appendix \ref{chap:appendix1}. Figure \ref{fig:Maps} illustrates the maps with their cities.
+\begin{figure}[htp]
+	
+	\centering
+	\includegraphics[width=.3\textwidth]{Illustrations/Burma14Raw}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/EIL51Raw}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/KROB100Raw}
+	
+	\caption{Illustration of the maps with the cities as data points. (L-R) Burma 14, EIL51, and KROB100. Larger illustrations of these maps can be seen on Figures \ref{fig:Burma14}, \ref{fig:EIL51}, and \ref{fig:KROB100} from Appendix \ref{chap:appendix1}.} 
+	\label{fig:Maps}
+\end{figure}
+
+ Three algorithms are used in this project: Basic Genetic Algorithm (BGA), Multi-Offspring Genetic Algorithm (MO-GA), and the Multi-Offspring Genetic Algorithm with Dynamic Mutation (MO-GA DM). The test cases are generated randomly, for each map, and those randomly generated values will be the initial values for all the three algorithms all throughout the different runs. The number of iterations will be the terminating condition: 100 for Burma14, and 1000 for both EIL51 and KROB100. \par
+
+Each map is saved on a csv file which is imported on Matlab. The algorithm described on section \ref{MOGA} is used to implement MO-GA. For the BGA, the algorithm exhausted is almost the same as the one used for MO-GA, however, the number of offspring is reduced into two per crossover as it is the main difference between the BGA and MO-GA \cite{wang2016multi}. An initial population is generated at random once for all the algorithms for each map to give each method an equal starting line. All the algorithms are all coded in Matlab R2021a Update 3 (64-bit). It runs on MacBook Pro (2020) with Apple M1 Chip with 16 GB RAM.

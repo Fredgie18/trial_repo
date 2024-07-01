@@ -1,0 +1,37 @@
+\chapter{Introduction}
+\label{chap:intro}
+
+\section{Background of the Study}
+		\indent \indent Given a set of locations, what is the shortest path that will take you to visit all of this locations and go back to your starting point? This question is answered by the Traveling Salesman Problem (TSP), a combinatorial problem that was defined in the 1930s by Karl Menger \cite{salvador2010traveling,brucato2013traveling,papadimitriou1977euclidean}. Aside from a simple calculation of distance, its methods and foundations are also applied in logistics, planning, scheduling, routing problems, and other related fields \cite{narwadi2017application}. \par 
+
+John Holland introduced the Genetic Algorithm (GA) in 1975 \cite{reeves2003genetic}. It is one of the most commonly used Evolutionary Algorithms and  is mainly based on Darwin's Theory of Evolution and is used in optimization problems. Its importance in the field of computer science include scheduling applications, image processing, travelling salesman problem, and other related subjects \cite{maimon1998genetic,dos2014evolutionary,larranaga1999genetic}. GA seems to have no limits as it also applies on other fields and problems that include design of anti-terrorism systems, estimation of heat flux between the atmosphere and sea ice, and even on the detection of cancer \cite{buurman2009reducing,stanislawska2015genetic,fitzgerald2015integrated}.
+
+		Simulated Annealing was the first heuristic used to solve TSP until Robert Brady utilized Genetic Algorithm for TSP \cite{larranaga1999genetic,brady1985optimization}. Within the same year in 1895, John Grefenstette introduced heuristic crossover while David Goldberg and Robert Lingle introduced partially-mapped crossover \cite{grefenstette1985genetic,goldberg1985alleles}. There are other improvements made on the application of GA on TSP throughout the years including the matrix crossover by Abdollah Homaifar and the implementation of adaptive capabilities of crossover and mutation by Srinivas and Patnaik \cite{homaifar1992schema,srinivas1994adaptive}. In 2016, Jiquan Wang introduced the use of a Multi-Offspring Genetic Algorithm (MO-GA) that doubles the size of the offspring produced from crossover as compared to the other GAs that solve TSP \cite{wang2016multi}.\par
+
+\section{Statement of the Problem}
+
+\indent \indent 	Converging into an optimum solution and providing diverse solutions are two of the factors that affect the effectivity of a Genetic Algorithm\cite{srinivas1994adaptive}. A balance between both is an ideal way of implementing GA. Multiple-Offspring Genetic Algorithm (MO-GA) utilizes such method on its selection and crossover method \cite{wang2016multi}. However, it fails to do so on its mutation operator as it uses the traditional way of setting a fixed parameter for its mutation rate. With that, a trial and error is needed to find the optimal parameter, which could lead to tedious work as simulations are to be done every time a parameter is changed.
+
+\section{Objective of the Study}
+
+\subsection{General Objective of the Study}
+
+\indent \indent The general objective of this study is to formulate an algorithm that could aid in finding solutions to Traveling Salesman Problem. Given a set of points, the method should be able to provide the shortest path to visit each point.\par
+With the modifications made on this research, fields that utilize the foundations of TSP could be improved. Better solutions to problems could be obtained, at the possibility of obtaining them at a faster rate.
+
+\subsection{Specific Objective of the Study}
+
+\indent \indent  The research aims to improve the Multiple Offspring Genetic Algorithm (MO-GA) by modifying the parameter for mutation. Aside from yielding better solutions, it should also be solved faster by the proposed algorithm as compared to the Basic Genetic Algorithm and the MO-GA. By comparing results of each agorithm side-by-side, assesment on the improvement could be made, as to whether the modification is impactful or not.
+
+\section{Significance of the Study}
+
+\indent \indent Multi-Offspring Genetic Algorithm with Dynamic Mutation (MO-GA with DM) introduces a dynamic mutation rate with the MO-GA could aid in creating the balance required in optimizing and diversifying solutions not only on the crossover method, but also on the mutation method. The effectivity of this algorithm is expected to be at par, or better, than the MO-GA. \par 
+
+The algorithm focuses on providing solution for TSP. It also aims to introduce a hybrid GA that exhausts the adaptive capabilities on two of its methods: selection and mutation. 
+
+\section{Scope and Limitation}
+
+\indent \indent 	This study is focused on obtaining optimum solutions of different maps for the presented algorithm, as well as for Basic Genetic Algorithm and Multiple Offspring Genetic Algorithm. Every computed optimum solution per iteration will be compared for all the algorithms in order to assess which algorithm works best in obtaining a solution efficiently. Also, the program only works in 2d as the data points given are presented with only the x and y coordinates. The algorithm only works on symmetrical TSP as it is assumed that the distances going back and forth are equal.
+
+
+

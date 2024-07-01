@@ -1,0 +1,173 @@
+\chapter{Results and Discussion}
+\label{chap:Results and Discussion}
+\indent \indent Each algorithm was run 100 times per map. The shortest and longest path lengths out of those 100 runs were obtained and their relative error compared to the known solution was computed. Ideal solutions are expected to have lower path lengths. Additionaly, the relative error of these solutions are minimal. The relative error is computed by using Equation \ref{eq:relativeError}.
+
+\begin{equation}
+	\label{eq:relativeError}
+	\% Error = \frac{S_O - S_K}{S_K}  * 100\%
+\end{equation}
+where:
+\begin{tabbing}
+	\phantom{$D_{n50}\ $}\= \kill
+	$S_K$ = the known optimal solution\\
+	$S_O$\> = the obtained solution from the algorithm\\
+\end{tabbing}
+
+\begin{table*}[h]
+	\begin{center}
+		\begin{tabular}{ c c c c }
+			Algorithm& Obtained Solution & Known Optimal Solution&\% Error\\ 
+			\hline
+			BGA & 30.8785 & 30.8785& 0  \\
+			MO-GA & 30.8785 & 30.8785& 0  \\
+			MO-GA with Dynamic Mutation & 30.8785& 30.8785 & 0 \\
+		\end{tabular}
+		\caption{The comparison of the obtained best optimum solutions for Burma14.}
+		\label{table:Burma14OpSummary}
+	\end{center}
+\end{table*}
+
+\begin{table*}[h]
+	\begin{center}
+		\begin{tabular}{ c c c c }
+			Algorithm& Obtained Solution & Known Optimal Solution&\% Error\\ 
+			\hline
+			BGA & 33.7082 & 30.8785& 9.16  \\
+			MO-GA & 31.8283 & 30.8785& 3.08  \\
+			MO-GA with Dynamic Mutation & 30.8785 & 30.8785& 0 \\
+		\end{tabular}
+		\caption{The comparison of the obtained worst optimum solutions for Burma14 after 100 runs.}
+		\label{table:Burma14WorstSummary}
+	\end{center}
+\end{table*}
+
+For Burma14, all the three algorithms arrived at the same optimal solution, yielding a path length of 30.8785, which is the same as the known optimal solution. Table \ref{table:Burma14OpSummary} shows the data of the best solutions for each algorithm alongside the knows solution.
+
+With the worst solutions for Burma14, BGA yielded the longest path length having 33.7082 at 9.16\% error, while MO-GA with DM had the shortest length at 0\% error from the optimal solution. Meanwhile, MOGA had a length of 31.8283 with 3.08\% error. The comparison of the worst solutions can be seen closely on Table \ref{table:Burma14WorstSummary}.
+
+
+\begin{table*}[h]
+	\begin{center}
+		\begin{tabular}{ c c c c }
+			Algorithm& Obtained Solution & Known Optimal Solution&\% Error\\ 
+			\hline
+			BGA & 437.5542 &426& 2.71 \\
+			MO-GA & 437.4470 &426& 2.7  \\
+			MO-GA with Dynamic Mutation & 429.1179 &426& 0.73 \\
+		\end{tabular}
+		\caption{The comparison of the obtained best optimum solutions for EIL51 after 100 runs.}
+		\label{table:EIL51OpSummary}
+	\end{center}
+\end{table*}
+
+\begin{table*}[h]
+	\begin{center}
+		\begin{tabular}{ c c c c }
+			Algorithm& Obtained Solution & Known Optimal Solution&\% Error\\ 
+			\hline
+			BGA & 493.3572 & 426&15.81 \\
+			MO-GA & 476.5986 & 426&11.88  \\
+			MO-GA with Dynamic Mutation & 459.7808 &426 & 7.93 \\
+		\end{tabular}
+		\caption{The comparison of the obtained worst optimum solutions for EIL51 after 100 runs.}
+		\label{table:EIL51WorstSummary}
+	\end{center}
+\end{table*}
+
+In the case of EIL 51, the best solutions of the three algorithms differ. The known optimal solution has a length of 426.  MOGA with DM produced the solution with the lowest relative error at 0.73\% having a length of 429.1179. BGA and MOGA came close to each other, yielding 437.5542 at 2.71\% and 437.4470 at 2.7\% respectively. This comparison is summarized on Table \ref{table:EIL51OpSummary}.
+
+With its worst solutions, the MO-GA with DM still had the best one having 459.7808 at 7.93\% relative error. MO-GA had 476.5986 at 11.88\% error while BGA had the worst performance among the three with 493.3572 at 15.81\% error. The worst solutions are presented on Table \ref{table:EIL51WorstSummary}.
+
+\begin{table*}[h]
+	\begin{center}
+		\begin{tabular}{ c c c c }
+			Algorithm& Obtained Solution & Known Optimal Solution&\% Error\\ 
+			\hline
+			BGA & 24364.5235 & 22,141 & 10.04  \\
+			MO-GA & 23283.9925  & 22,141& 5.16  \\
+			MO-GA with Dynamic Mutation & 22585.9404  & 22,141& 2.01 \\
+		\end{tabular}
+		\caption{The comparison of the obtained best optimum solutions for KROB100.}
+		\label{table:KROB100OpSummary}
+	\end{center}
+\end{table*}
+
+\begin{table*}[h]
+	\begin{center}
+		\begin{tabular}{ c c c c }
+			Algorithm& Obtained Solution & Known Optimal Solution&\% Error\\ 
+			\hline
+			BGA & 27640.0017  & 22,141& 24.37  \\
+			MO-GA & 26777.1512  & 22,141& 20.94  \\
+			MO-GA with Dynamic Mutation & 24852.6995  & 22,141& 12.25 \\
+		\end{tabular}
+		\caption{The comparison of the obtained worst optimum solutions for KROB100.}
+		\label{table:KROB100WorstSummary}
+	\end{center}
+\end{table*}
+
+For the largest of the three maps, the KROB100, MO-GA with DM outperformed the other algorithms. For the best solutions presented on Table \ref{table:KROB100OpSummary}, MO-GA with DM had a path length of 22,585.9404 with 2.01\% error compared to the known optimal solution which is at 22,141. MO-GA performed the second best with 23,283.9925 at 5.16\% error.Meanwhile, BGA resulted in 24,3684.5235 with 10.04\% error.
+
+With regards to the worst performances on KROB 100, which is presented on Table \ref{table:KROB100WorstSummary}, MO-GA with Dynamic Mutation had the best results among the three algorithms with 24852.6995 at 12.25\% error. MO-GA yielded 26777.1512 with 20.94\% error and BGA had 27640.0017 at 24.27\% error.
+
+\begin{table*}[h]
+	\begin{center}
+		\begin{tabular}{ c c| c c| c c| c c|}
+			& &  \multicolumn{2}{c|}{BGA} & \multicolumn{2}{c|}{MOGA} & \multicolumn{2}{c|}{MOGA DM} \\ 
+			& Known  & Average & \% Error & Average & \% Error & Average & \% Error \\
+			\hline
+			Burma14  & 30.8785& 31.3042 & 1.38 & 31.0775 & 0.64 & 30.8785 & 0   \\
+			EIL51 &  426& 457.4377 & 7.38 &  452.6436 & 6.25 & 442.4443& 3.86  \\
+			KROB100 &  22,141 & 26199.2686 & 18.33& 25096.3903 &13.35 & 23610.1956 & 6.64\\
+		\end{tabular}
+		\caption{The average optimum solutions for each algorithm}
+		\label{table:SummaryAveData}
+	\end{center}
+\end{table*}
+
+
+\begin{figure}[htp]
+	
+	\centering
+	\includegraphics[width=.3\textwidth]{Illustrations/SummaryBurma14.png}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/SummaryEIL51.png}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/SummaryKROB100.png}
+	
+	\caption{Comparison of the best path lengths in every generation for each map for the different algorithms. (L-R) Burma 14, EIL51, and KROB100.}
+	\label{fig:BestLengthsSummary}
+	
+\end{figure}
+
+Figure \ref{fig:BestLengthsSummary} shows the comparison of the best path lengths for every generation of the different algorithms. A closer look on the illustrations can be seen on Figures \ref{fig:Burma14Best}, \ref{fig:EIL51Best}, and  \ref{fig:KROB100Best} on the Appendix. For Burma 14 all the algorithms arrived at the same optimum path, however, MOGA-DM arrived at that solution at an earlier generation as compared to the BGA and MOGA. For both the EIL51 and KROB100, MOGA-DM arrived at better solutions than both the BGA and MOGA. Table \ref{table:SummaryAveData} summarizes the average optimum solutions for each algorithm. 
+
+\begin{figure}[htp]
+	
+	\centering
+	\includegraphics[width=.3\textwidth]{Illustrations/SummaryAveBurma14.png}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/SummaryAveEIL51.png}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/SummaryAveKROB100.png}
+	
+	\caption{Comparison of the average path lengths in each generation for each map for the different algorithms. (L-R) Burma 14, EIL51, and KROB100.}
+	\label{fig:AverageSummary}
+	
+\end{figure}
+
+The average performances of each of the algorithms on the three maps are presented on \ref{table:SummaryAveData}. MOGA-DM clearly outperformed BGA and MOGA on all the three maps even after averaging the 100 runs done. For Burma 14, it yielded a 0\% error while MOGA and BGA had 0.64\% and 1.38\% errors respectively. MOGA-DM resulted in 3.86\% error on EIL51 while MOGA and BGA each had 6.25\% and 7.38\% errors. For the largest map, the KROB100, MOGA-DM had 6.64\% error on average while MOGA and BGA came up with 13.35\% and 18.33\% errors. 
+
+The comparison of the average performance of the algorithms on each of the paths can be seen on the Figure \ref{fig:AverageSummary}. Bigger illustrations can be seen on Figures \ref{fig:Burma14Average}, \ref{fig:EIL51Average}, and  \ref{fig:KROB100Average} from the Appendix. For Burma 14, note that the MOGA-DM has the same average optimum solution as the known solution which means that all of the 100 runs resulted in the real optimum solution. On the other maps, MOGA-DM also yielded better average solutions than both the BGA and MOGA.
+
+\begin{figure}[htp]
+	
+	\centering
+	\includegraphics[width=.3\textwidth]{Illustrations/Burma14Op.png}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/EIL51.png}\hfill
+	\includegraphics[width=.3\textwidth]{Illustrations/KROB100.png}
+	
+	\caption{Illustration of the best paths for each map from the MOGA-DM. (L-R) Burma 14, EIL51, and KROB100.}
+	\label{fig:OptimumPaths}
+	
+\end{figure}
+
+The path of the best solutions are then obtained and a visualization of these paths are shown on Figure \ref{fig:OptimumPaths}. Larger illustrations of these paths can be seen on Figures \ref{fig:Burma14Path}, \ref{fig:EIL51Path}, and  \ref{fig:KROB100Path} within the Appendix.
+
+As observed from the results obtained, the solutions for MO-GA with DM on all maps arrive to the optimum solutions faster and converges to a shorter path length as compared to the solutions for BGA and MO-GA. This means that MO-GA with DM yielded better results compared to the BGA and MO-GA. It is also noted that the end of each run, MO-GA had better results than the BGA, as expected. MO-GA with DM also outperformed MO-GA on all the three maps where MO-GA with DM had better results at the end of each run, and it also arrived at these results on earlier generation or iteration as compared to the other two algorithms. This shows that MO-GA with DM is superior to BGA and MO-GA when it comes to effectivity and speed.

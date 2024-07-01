@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: AquinoFinal.aux
+A level-1 auxiliary file: publicannounce.aux
+A level-1 auxiliary file: intro.aux
+A level-1 auxiliary file: chap2.aux
+A level-1 auxiliary file: chap3.aux
+A level-1 auxiliary file: chap4.aux
+A level-1 auxiliary file: chap5.aux
+The style file: siam.bst
+Database file #1: biblio.bib
+Repeated entry---line 107 of file biblio.bib
+ : @article{combinatorics
+ :                       ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in graphtheory
+Warning--empty journal in alzohairy
+Warning--can't use both volume and number fields in grefenstette1985genetic
+Warning--empty journal in morris2017combinatorics
+Warning--can't use both volume and number fields in narwadi2017application
+Warning--empty journal in papadimitriou1977euclidean
+Warning--empty journal in combinatorics
+Warning--empty journal in realnumbergenetic
+Warning--empty year in darwin
+You've used 44 entries,
+            2030 wiz_defined-function locations,
+            759 strings with 11199 characters,
+and the built_in function-call counts, 15241 in all, are:
+= -- 1501
+> -- 562
+< -- 0
++ -- 232
+- -- 180
+* -- 1132
+:= -- 2282
+add.period$ -- 44
+call.type$ -- 44
+change.case$ -- 220
+chr.to.int$ -- 0
+cite$ -- 53
+duplicate$ -- 749
+empty$ -- 1199
+format.name$ -- 180
+if$ -- 3300
+int.to.chr$ -- 0
+int.to.str$ -- 44
+missing$ -- 42
+newline$ -- 135
+num.names$ -- 87
+pop$ -- 222
+preamble$ -- 1
+purify$ -- 178
+quote$ -- 0
+skip$ -- 633
+stack$ -- 0
+substring$ -- 1115
+swap$ -- 319
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 174
+warning$ -- 9
+while$ -- 172
+width$ -- 46
+write$ -- 386
+(There was 1 error message)

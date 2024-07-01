@@ -1,0 +1,109 @@
+% BS Computer Science special problem  template for UP Baguio
+% modifications are made to suit UP Baguio BSCS SP template 
+\documentclass[12pt]{report}
+\usepackage{epsfig}
+\usepackage{UPBcomsci}  
+\usepackage{UPBnotations}
+\usepackage{comment}
+\usepackage{amssymb, graphicx, amsmath}
+\usepackage{subfigure} 
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{moreverb}
+\usepackage{longtable}
+\usepackage[sort]{cite}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+%\usepackage{rotating}
+
+\begin{document}
+
+\title{Multi Offspring Genetic Algorithm with Dynamic Mutation and its Application to the Traveling Salesman Problem}
+
+\authorfirst{Fredgie Louis B.}
+\authorlast{Aquino}
+%\authorext{Jr.} \authorexttrue %make this a comment if you do not have an extension name e.g. Jr., II, III, etc.
+
+\degree{Bachelor of Science in Computer Science} %enter the specific degree
+\thesistype{Special Problem} %enter whether Master's Thesis or Doctoral Dissertation for this is Special Problem
+\thesisdocument{Special Problem} %enter whether Thesis or Dissertation or Special Problem
+
+%\specialization{Computer Science} \specializetrue %make this a comment if you are Ph.D. or BS student or no specialization
+
+\defensedate{June 11, 2022} %indicate the month, day and year the research was defended
+\submitmonth{June} %indicate the month the manuscript was submitted to the office
+\submityear{2022} %indicate the year the manuscript was submitted to the CS office
+
+%% Change to name of Adviser
+\adviser{Lee  Javellana}%main adviser
+%\reader{Joel  M. Addawe, Ph.D.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% highlight \bothabsenttrue if the student has only one adviser and one reader
+%% otherwise comment \bothabsenttrue and highlight \coadviser or \coreader which 
+%% ever is applicable. In this case, the package assumes either you have 1 Adviser 
+%% and 2 Readers, or 2 Advisers and 1 Reader. 
+  
+\bothabsenttrue
+
+%\coadviser{co-Adviser} 
+%\coadvisetrue  
+% Make the \coadvisetrue as a comment if there is no adviser
+
+%\coreader{Co-Reader's Name}  %leave this blank if there is a coadviser
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chairman{Jerico B. Bacani, Ph.D.} 
+%\dean{Rosemary M. Guttierez, Ph.D.}
+
+\acknowledge{\hspace{6 mm}\indent The pandemic has taken a toll on everyone, including me. Anxiety has left me hanging and made me postpone anything I would want to do, including this research. Now, I have decided to stand up and finish the tasks I should be doing. \linebreak
+\indent First of all, I would like to extend my sincerest gratitude to my family, especially to my Mamang Regie and Papang Freddie. It has been a long and unconventional path, but you guys stayed by my side all the way. Your support meant a lot to me and I honestly couldn't have done it without you. Shoutout also to my brothers, Al Francis and Mark Lee, for always supporting your kuya. You guys are the best. \linebreak
+\indent \indent I also sincerely thank all the people who have been instrumental in my daily survival for the past years. As a student, it is difficult to get opportunities that will help you get by. To the local fashion industry, thank you for introducing me to my potentials and to all the amazing people I have met and worked with. To my MarkeTeam, I am beyond grateful  for all the experiences and the consistent shoot gigs you have given me. To the SG team, thank you for giving me the chance to practice my degree for the common good. To the other people I have worked with for the past years, I am grateful for all your existence.\linebreak 
+\indent \indent I would also want to send my appreciation to all my friends who stayed with me, even during the darkest of times. Life has taught me that it could always be better if you have a nice set of people around you. The times we spent together, face to face or virtual, were vital in maintaining my sanity through the darkest times. I would forever cherish every laughter and tears that we all shared together. Labyu all! \linebreak
+\indent \indent To the people who pushed me to finally finish this, thank you for the pressure and for the constant reminders on the things that need to be done. Your words and actions were the extra push I needed to motivate myself into completing this research. \linebreak
+\indent \indent A big thanks also to my research adviser, Sir Lee Javellana, who is always an email away. Thank you for the kindness, guidance, and patience while I am doing this work. \linebreak
+\indent \indent Lastly, I would like to thank God, who made all these things possible.
+}
+
+\abs{
+	In this paper, solutions for the Traveling Salesman Problem (TSP) are solved using a modified version of the Genetic Algorithm (GA). The Multi-Offspring Genetic Algorithm with Dynamic Mutation (MO-GA with DM) finds optimized solutions for the TSP by applying a modification to the parameters to a currently existing algorithm. By obtaining solutions of different maps using Matlab, results have shown that the proposed algorithm has promising results as it also outperforms the preexisting algorithm.}
+
+%\biodatatrue 
+
+\beforepreface 
+
+\tableofcontents
+
+\newpage
+
+\acknowledgetrue
+\acknowledgepage
+
+\abstractpage
+\listoftables
+\listoffigures
+
+\afterpreface
+
+\include{intro}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+
+%\nocite*        -- comment out if you want to include all references in the bibliog file
+\bibliographystyle{siam}
+\bibliography{biblio}
+
+\appendix
+\input{appendix}
+\input{appendix1}
+\input{appendix2}
+\input{appendix3}
+\input{appendix4}
+\input{code}
+
+\end{document}

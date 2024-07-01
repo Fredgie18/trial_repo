@@ -1,0 +1,52 @@
+\contentsline {chapter}{Acknowledgments}{v}{chapter*.2}%
+\contentsline {chapter}{Abstract}{vi}{chapter*.3}%
+\contentsline {chapter}{List of Tables}{vii}{chapter*.4}%
+\contentsline {chapter}{List of Figures}{ix}{chapter*.5}%
+\contentsline {chapter}{\numberline {Chapter 1.}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Background of the Study}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Statement of the Problem}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objective of the Study}{2}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}General Objective of the Study}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Specific Objective of the Study}{2}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Significance of the Study}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Scope and Limitation}{3}{section.1.5}%
+\contentsline {chapter}{\numberline {Chapter 2.}Review of Related Literature}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Combinatorics}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Enumeration}{5}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Graph Theory}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Traveling Salesman Problem}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Darwin's Theory of Evolution}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Genetic Algorithm}{11}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Initializing the Population}{12}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Selection}{12}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Crossover}{13}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Mutation}{14}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Parameter Setting}{14}{subsection.2.5.5}%
+\contentsline {section}{\numberline {2.6}Genetic Algorithm on Travelling Salesman Problem}{15}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Representations}{15}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Crossover}{16}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Mutation}{18}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Multiple Offspring Genetic Algorithm}{19}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Initializing the Population}{20}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Selection}{20}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Crossover and Mutation}{22}{subsection.2.7.3}%
+\contentsline {chapter}{\numberline {Chapter 3.}Methodology}{24}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Representation}{26}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Initialization}{26}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Computation for Path Length and Arrangement}{27}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Preservation of \emph {q} elitist members}{28}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Selection and Crossover}{28}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Preserving another set of \emph {q} elitist members}{34}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Computation for Mutation Rate}{35}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Mutation Process}{38}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Create New Population}{39}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Test Cases and Experimental Setup}{41}{section.3.10}%
+\contentsline {chapter}{\numberline {Chapter 4.}Results and Discussion}{43}{chapter.4}%
+\contentsline {chapter}{\numberline {Chapter 5.}Conclusion and Recommendation}{48}{chapter.5}%
+\contentsline {chapter}{List of References}{49}{chapter*.6}%
+\contentsline {chapter}{\numberline {Appendix A.}Table for raw data of the maps.}{54}{appendix.A}%
+\contentsline {chapter}{\numberline {Appendix B.}Illustrations for the raw map}{61}{appendix.B}%
+\contentsline {chapter}{\numberline {Appendix C.}Illustration of the best path lengths}{64}{appendix.C}%
+\contentsline {chapter}{\numberline {Appendix D.}Graph of best path lengths per generation}{67}{appendix.D}%
+\contentsline {chapter}{\numberline {Appendix E.}Graph of average lengths per generation}{70}{appendix.E}%
+\contentsline {chapter}{\numberline {Appendix F.}Source Code}{73}{appendix.F}%

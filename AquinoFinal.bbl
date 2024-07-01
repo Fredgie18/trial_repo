@@ -1,0 +1,208 @@
+\begin{thebibliography}{10}
+
+\bibitem{graphtheory}
+{\sc V.~Adamchick}, {\em Graph theory},  (2005).
+
+\bibitem{alzohairy}
+{\sc A.~M. Alzohairy}, {\em Darwin's theory of evolution},  (2014).
+
+\bibitem{bhattacharjya2012introduction}
+{\sc R.~K. Bhattacharjya}, {\em Introduction to genetic algorithms}, IIT
+  Guwahati, 12 (2012).
+
+\bibitem{bodenhofer2003genetic}
+{\sc U.~Bodenhofer}, {\em Genetic algorithms: theory and applications}, 2003.
+
+\bibitem{brady1985optimization}
+{\sc R.~Brady}, {\em Optimization strategies gleaned from biological
+  evolution}, Nature, 317 (1985), pp.~804--806.
+
+\bibitem{brucato2013traveling}
+{\sc C.~Brucato}, {\em The Traveling Salesman Problem}, PhD thesis, University
+  of Pittsburgh, 2013.
+
+\bibitem{buurman2009reducing}
+{\sc J.~Buurman, S.~Zhang, and V.~Babovic}, {\em Reducing risk through real
+  options in systems design: the case of architecting a maritime domain
+  protection system}, Risk Analysis: An International Journal, 29 (2009),
+  pp.~366--379.
+
+\bibitem{de1975analysis}
+{\sc K.~A. De~Jong}, {\em An analysis of the behavior of a class of genetic
+  adaptive systems.}, University of Michigan, 1975.
+
+\bibitem{dos2014evolutionary}
+{\sc A.~C. dos Santos-Paulino, J.-C. Nebel, and F.~Fl{\'o}rez-Revuelta}, {\em
+  Evolutionary algorithm for dense pixel matching in presence of distortions},
+  in European Conference on the Applications of Evolutionary Computation,
+  Springer, 2014, pp.~439--450.
+
+\bibitem{eiben1999parameter}
+{\sc {\'A}.~E. Eiben, R.~Hinterding, and Z.~Michalewicz}, {\em Parameter
+  control in evolutionary algorithms}, IEEE Transactions on evolutionary
+  computation, 3 (1999), pp.~124--141.
+
+\bibitem{fitzgerald2015integrated}
+{\sc J.~M. Fitzgerald, C.~Ryan, D.~Medernach, and K.~Krawiec}, {\em An
+  integrated approach to stage 1 breast cancer detection}, in Proceedings of
+  the 2015 Annual Conference on Genetic and Evolutionary Computation, 2015,
+  pp.~1199--1206.
+
+\bibitem{gen2007genetic}
+{\sc M.~Gen and L.~Lin}, {\em Genetic algorithms}, Wiley Encyclopedia of
+  Computer Science and Engineering,  (2007), pp.~1--15.
+
+\bibitem{godfrey2007conditions}
+{\sc P.~Godfrey-Smith}, {\em Conditions for evolution by natural selection},
+  The Journal of Philosophy, 104 (2007), pp.~489--516.
+
+\bibitem{goldberg1985alleles}
+{\sc D.~E. Goldberg, R.~Lingle, et~al.}, {\em Alleles, loci, and the traveling
+  salesman problem}, in Proceedings of an international conference on genetic
+  algorithms and their applications, vol.~154, Carnegie-Mellon University
+  Pittsburgh, PA, 1985, pp.~154--159.
+
+\bibitem{grefenstette1985genetic}
+{\sc J.~Grefenstette, R.~Gopal, B.~Rosmaita, and D.~Van~Gucht}, {\em Genetic
+  algorithms for the traveling salesman problem}, in Proceedings of the first
+  International Conference on Genetic Algorithms and their Applications,
+  vol.~160, Lawrence Erlbaum, 1985, pp.~160--168.
+
+\bibitem{grefenstette1986optimization}
+{\sc J.~J. Grefenstette}, {\em Optimization of control parameters for genetic
+  algorithms}, IEEE Transactions on systems, man, and cybernetics, 16 (1986),
+  pp.~122--128.
+
+\bibitem{gupta2012study}
+{\sc A.~Gupta and S.~Khurana}, {\em Study of traveling salesman problem using
+  genetic algorithm}, International Journal of Managment, IT and Engineering, 2
+  (2012), pp.~575--588.
+
+\bibitem{hahsler2007tsp}
+{\sc M.~Hahsler and K.~Hornik}, {\em Tsp-infrastructure for the traveling
+  salesperson problem}, Journal of Statistical Software, 23 (2007), pp.~1--21.
+
+\bibitem{haist2007optical}
+{\sc T.~Haist and W.~Osten}, {\em An optical solution for the traveling
+  salesman problem}, Optics Express, 15 (2007), pp.~10473--10482.
+
+\bibitem{homaifar1992schema}
+{\sc A.~Homaifar, S.~Guan, and G.~E. Liepins}, {\em Schema analysis of the
+  traveling salesman problem using genetic algorithms}, Complex Systems, 6
+  (1992), pp.~533--552.
+
+\bibitem{jain2017solving}
+{\sc V.~Jain and J.~S. Prasad}, {\em Solving travelling salesman problem using
+  greedy genetic algorithm gga}, International Journal of Engineering and
+  Technology, 9 (2017), pp.~1148--54.
+
+\bibitem{larranaga1999genetic}
+{\sc P.~Larranaga, C.~M.~H. Kuijpers, R.~H. Murga, I.~Inza, and S.~Dizdarevic},
+  {\em Genetic algorithms for the travelling salesman problem: A review of
+  representations and operators}, Artificial Intelligence Review, 13 (1999),
+  pp.~129--170.
+
+\bibitem{maad2016genetic}
+{\sc M.~M. Maad}, {\em Genetic algorithm optimization by natural selection},
+  2016.
+
+\bibitem{maimon1998genetic}
+{\sc O.~Maimon and D.~Braha}, {\em A genetic algorithm approach to scheduling
+  pcbs on a single machine}, International Journal of Production Research, 36
+  (1998), pp.~761--784.
+
+\bibitem{matai2010traveling}
+{\sc R.~Matai, S.~P. Singh, and M.~L. Mittal}, {\em Traveling salesman problem:
+  an overview of applications, formulations, and solution approaches},
+  Traveling salesman problem, theory and applications, 1 (2010).
+
+\bibitem{morris2017combinatorics}
+{\sc J.~Morris}, {\em Combinatorics: Enumeration, graph theory, and design
+  theory},  (2017).
+
+\bibitem{narwadi2017application}
+{\sc T.~Narwadi and Subiyanto}, {\em An application of traveling salesman
+  problem using the improved genetic algorithm on android google maps}, in AIP
+  Conference Proceedings, vol.~1818, AIP Publishing LLC, 2017, p.~020035.
+
+\bibitem{papadimitriou1977euclidean}
+{\sc C.~H. Papadimitriou and P.~CH}, {\em The euclidean traveling salesman
+  problem is np-complete.},  (1977).
+
+\bibitem{reeves2003genetic}
+{\sc C.~Reeves}, {\em Genetic algorithms}, in Handbook of metaheuristics,
+  Springer, 2003, pp.~55--82.
+
+\bibitem{ruohonen2013graph}
+{\sc K.~Ruohonen}, {\em Graph theory. tampereen teknillinen yliopisto.
+  originally titled graafiteoria, lecture notes translated by tamminen, j.,
+  lee, k}, C. and Pich{\'e}, R,  (2013).
+
+\bibitem{safe2004stopping}
+{\sc M.~Safe, J.~Carballido, I.~Ponzoni, and N.~Brignole}, {\em On stopping
+  criteria for genetic algorithms}, in Brazilian Symposium on Artificial
+  Intelligence, Springer, 2004, pp.~405--413.
+
+\bibitem{salvador2010traveling}
+{\sc T.~Salvador}, {\em The traveling salesman problem: a statistical
+  approach}, Report within the scope of the program “Novos Talentos em
+  Matem{\'a}tica”—Funda{\c{c}}{\~a}o Calouste Gulbenkian, Portugal,
+  (2010).
+
+\bibitem{singh2013study}
+{\sc S.~Singh and E.~A. Lodhi}, {\em Study of variation in tsp using genetic
+  algorithm and its operator comparison}, International Journal of Soft
+  Computing and Engineering (IJSCE), 3 (2013), pp.~264--267.
+
+\bibitem{srinivas1994adaptive}
+{\sc M.~Srinivas and L.~M. Patnaik}, {\em Adaptive probabilities of crossover
+  and mutation in genetic algorithms}, IEEE Transactions on Systems, Man, and
+  Cybernetics, 24 (1994), pp.~656--667.
+
+\bibitem{srinivas1994genetic}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Genetic algorithms:
+  A survey}, computer, 27 (1994), pp.~17--26.
+
+\bibitem{stanislawska2015genetic}
+{\sc K.~Stanislawska, K.~Krawiec, and T.~Vihma}, {\em Genetic programming for
+  estimation of heat flux between the atmosphere and sea ice in polar regions},
+  in Proceedings of the 2015 Annual Conference on Genetic and Evolutionary
+  Computation, 2015, pp.~1279--1286.
+
+\bibitem{stanley1986enumerative}
+{\sc R.~P. Stanley}, {\em What is enumerative combinatorics?}, in Enumerative
+  combinatorics, Springer, 1986, pp.~1--63.
+
+\bibitem{combinatorics}
+{\sc S.~Walzer}, {\em Combinatorics},  (2016).
+
+\bibitem{realnumbergenetic}
+{\sc F.~Wang, J.~Wang, C.~Wu, and Q.~Wu}, {\em Research on improvement of real
+  number genetic algorithm},  (2006).
+
+\bibitem{wang2016multi}
+{\sc J.~Wang, O.~K. Ersoy, M.~He, and F.~Wang}, {\em Multi-offspring genetic
+  algorithm and its application to the traveling salesman problem}, Applied
+  Soft Computing, 43 (2016), pp.~415--423.
+
+\bibitem{darwin}
+{\sc S.~Waseda~University}, {\em Darwin’s theory of evolution by natural
+  selection a new theory of the origins of life}, Introduction to History and
+  Philosophy of Science.
+
+\bibitem{xu2018application}
+{\sc J.~Xu, L.~Pei, and R.-z. Zhu}, {\em Application of a genetic algorithm
+  with random crossover and dynamic mutation on the travelling salesman
+  problem}, Procedia computer science, 131 (2018), pp.~937--945.
+
+\bibitem{yadav2017comparative}
+{\sc S.~L. Yadav and A.~Sohal}, {\em Comparative study of different selection
+  techniques in genetic algorithm}, International Journal of Engineering,
+  Science and Mathematics, 6 (2017), pp.~174--180.
+
+\bibitem{yang2007genetic}
+{\sc S.~Yang}, {\em Genetic algorithms with elitism-based immigrants for
+  changing optimization problems}, in Workshops on Applications of Evolutionary
+  Computation, Springer, 2007, pp.~627--636.
+
+\end{thebibliography}
